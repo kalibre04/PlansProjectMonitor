@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\WildlifeTransportPermit;
+use App\Models\WildlifeTransportPermit_geotag;
+use App\Models\Offices;
 
 class WildlifeTransportPermitController extends Controller
 {
@@ -11,9 +14,15 @@ class WildlifeTransportPermitController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-        //
+        $wtp = WildlifeTransportPermit::all();
+        $offices = Offices::all()->pluck('officename', 'id');
+        return view('rps/wtp.index', compact('wtp', 'offices'));
     }
 
     /**

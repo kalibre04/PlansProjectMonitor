@@ -43,17 +43,17 @@
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($cutperm as $cutperms)
+                  @foreach($wtp as $wtps)
                   	<tr>
-                  		<td>{{ $cutperms->id }}</td>
-                  		<td>{{ $cutperms->applicant_name }}</td>
-                  		<td>{{ $cutperms->area }}</td>
-                  		<td>{{ $cutperms->location }}</td>
-                  		<td>{{ $cutperms->status }}</td>
-                  		<td>{{ App\Models\permit_type::find($cutperms->permit_type)->permittype }}</td>
-                  		<td>{{ $cutperms->cutting_permitnum }}</td>
-                  		<td>{{ $cutperms->date_award }}</td>
-                  		<td>{{ $cutperms->date_approved }}</td>
+                  		<td>{{ $wtps->id }}</td>
+                  		<td>{{ $wtps->applicant_name }}</td>
+                  		<td>{{ $wtps->location }}</td>
+                  		<td>{{ $wtps->destination }}</td>
+                  		<td>{{ $wtps->status }}</td>
+                  		<td>{{ $wtps->numberofwildlife }}</td>
+                  		<td>{{ $wtps->species }}</td>
+                  		<td>{{ $wtps->dateissued }}</td>
+                  		<td>{{ $wtps->certificationfee }}</td>
                   		<td><a href="#view{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
                   	</tr>
                   @endforeach
@@ -70,7 +70,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 			{!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\CuttingPermitController@store', 'files'=>true]) !!}
+ 			{!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\WildlifeTransportPermitController@store', 'files'=>true]) !!}
 				<div class="modal-header">
 			    	<h4 class="modal-title">Add Entry</h4>
 			    </div>
@@ -86,8 +86,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Area') !!}
-				    				{!! Form::text('area',null,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Proof of Acquisition(image)') !!}
+				    				{!! Form::file('proofofacquisition',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -102,28 +102,19 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
+				    				{!! Form::label('','Destination') !!}
+				    				{!! Form::text('destination',null,['class'=>'form-control']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
 				    				{!! Form::text('status',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Permit Type') !!}
-				    				{!! Form::select('permit_type',$permittype,null,['class'=>'search-office', 'style'=>'width: 100%']) !!}
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Date Awarded') !!}
-				    				{!! Form::date('date_award',\Carbon\Carbon::now(),['class'=>'form-control']) !!}
-				    			</div>
-				    		</div>
-				    	</div>
-
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
@@ -143,8 +134,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Volume') !!}
-				    				{!! Form::text('volume',null,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Number of Wildlife') !!}
+				    				{!! Form::text('numberofwildlife',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -159,16 +150,24 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Cutting Permit No.') !!}
-				    				{!! Form::text('cutting_permitnum',null,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Inspection Report') !!}
+				    				{!! Form::file('inspection_image',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Date Approved') !!}
-				    				{!! Form::date('date_approved',\Carbon\Carbon::now(),['class'=>'form-control']) !!}
+				    				{!! Form::label('','Permit No.') !!}
+				    				{!! Form::text('permitnumber',null,['class'=>'form-control']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Date Issued') !!}
+				    				{!! Form::date('dateissued',\Carbon\Carbon::now(),['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -195,7 +194,7 @@
 				    			</div>
 				    		</div>
 				    	</div>
-					</div>
+				</div>
 				    <div class="modal-footer">
 				{!! Form::submit('Save Entry',['class'=>'btn btn-primary']) !!}
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -209,14 +208,14 @@
 @endsection
 
 @section('modal')
-@foreach($cutperm as $cutperms)
+@foreach($wtp as $wtps)
 <div id="edit{{ $cutperms->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
  		<div class="modal-content">
  			<div class="modal-body">
- 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\CuttingPermitController@update', $cutperms->id], 'files'=>true]) !!}
+ 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@update', $cutperms->id], 'files'=>true]) !!}
 				<div class="modal-header">
 			    	<h4 class="modal-title">Edit Entry</h4>
 			    </div>
@@ -225,15 +224,15 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Applicant Name') !!}
-				    				{!! Form::text('applicant_name',$cutperms->applicant_name,['class'=>'form-control']) !!}
+				    				{!! Form::text('applicant_name',$wtps->applicant_name,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Area') !!}
-				    				{!! Form::text('area',$cutperms->area,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Proof of Acquisition(image)') !!}
+				    				{!! Form::file('proofofacquisition',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -241,7 +240,15 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Location') !!}
-				    				{!! Form::text('location',$cutperms->location,['class'=>'form-control']) !!}
+				    				{!! Form::text('location',$wtps->location,['class'=>'form-control']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Destination') !!}
+				    				{!! Form::text('destination',$wtps->destination,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -249,23 +256,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{!! Form::text('status',$cutperms->status,['class'=>'form-control']) !!}
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Permit Type') !!}
-				    				{!! Form::select('permit_type',$permittype,$cutperms->permit_type,['class'=>'search-office', 'style'=>'width: 100%']) !!}
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Date Awarded') !!}
-				    				{!! Form::date('date_award',$cutperms->date_award,['class'=>'form-control']) !!}
+				    				{!! Form::text('status',$wtps->status,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -288,8 +279,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Volume') !!}
-				    				{!! Form::text('volume',$cutperms->volume,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Number of Wildlife') !!}
+				    				{!! Form::text('numberofwildlife',$wtps->numberofwildlife,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -297,23 +288,31 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Species') !!}
-				    				{!! Form::text('species',$cutperms->species,['class'=>'form-control']) !!}
+				    				{!! Form::text('species',$wtps->species,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Cutting Permit No.') !!}
-				    				{!! Form::text('cutting_permitnum',$cutperms->cutting_permitnum,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Inspection Report') !!}
+				    				{!! Form::file('inspection_image',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Date Approved') !!}
-				    				{!! Form::date('date_approved',$cutperms->date_approved,['class'=>'form-control']) !!}
+				    				{!! Form::label('','Permit No.') !!}
+				    				{!! Form::text('permitnumber',$wtps->permitnumber,['class'=>'form-control']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Date Issued') !!}
+				    				{!! Form::date('dateissued',$wtps->dateissued,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -321,7 +320,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Certification Fee') !!}
-				    				{!! Form::text('certification_fee',$cutperms->certification_fee,['class'=>'form-control']) !!}
+				    				{!! Form::text('certification_fee',$wtps->certification_fee,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -329,7 +328,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,$cutperms->office_id,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				{!! Form::select('office_id',$offices,$wtps->office_id,['class'=>'search-office', 'style'=>'width: 100%']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
