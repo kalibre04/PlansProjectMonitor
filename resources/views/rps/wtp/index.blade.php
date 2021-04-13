@@ -53,8 +53,8 @@
                   		<td>{{ $wtps->numberofwildlife }}</td>
                   		<td>{{ $wtps->species }}</td>
                   		<td>{{ $wtps->dateissued }}</td>
-                  		<td>{{ $wtps->certificationfee }}</td>
-                  		<td><a href="#view{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
+                  		<td>{{ $wtps->certification_fee }}</td>
+                  		<td><a href="#view{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
                   	</tr>
                   @endforeach
                   </tbody>                  
@@ -209,7 +209,7 @@
 
 @section('modal')
 @foreach($wtp as $wtps)
-<div id="edit{{ $cutperms->id }}" class="modal fade" role="dialog">
+<div id="edit{{ $wtps->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
@@ -359,7 +359,7 @@
 
 
 @foreach($wtp as $wtps)
-<div id="edit{{ $cutperms->id }}" class="modal fade" role="dialog">
+<div id="edit{{ $wtps->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
@@ -478,7 +478,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Office:') !!}
-				    				{{ App\Models\Offices::find($sapaa->office_id)->officename }}
+				    				{{ App\Models\Offices::find($wtps->office_id)->officename }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -509,7 +509,7 @@
 @endforeach
 
 @foreach($wtp as $wtps)
-<div id="upload{{ $cutperms->id }}" class="modal fade" role="dialog">
+<div id="upload{{ $wtps->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
@@ -521,7 +521,7 @@
 			    	</div>
 
 				<div class="modal-body">
-			    	{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@upload_photo', $cutperms->id], 'files'=>true]) !!}
+			    	{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@upload_photo', $wtps->id], 'files'=>true]) !!}
                             		<div class="form-group">
                                 		<label for="title">Image</label>
                                 		<input type="file" name="photos[]" class="form-control-file" multiple="">
