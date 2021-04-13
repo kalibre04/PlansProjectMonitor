@@ -215,7 +215,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@update', $cutperms->id], 'files'=>true]) !!}
+ 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@update', $wtps->id], 'files'=>true]) !!}
 				<div class="modal-header">
 			    	<h4 class="modal-title">Edit Entry</h4>
 			    </div>
@@ -358,31 +358,31 @@
 @endforeach
 
 
-@foreach($cutperm as $cutperms)
-<div id="view{{ $cutperms->id }}" class="modal fade" role="dialog">
+@foreach($wtp as $wtps)
+<div id="edit{{ $cutperms->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
  		<div class="modal-content">
  			<div class="modal-body">
- 				{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\CuttingPermitController@show', $cutperms->id], 'files'=>true]) !!}
+ 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@update', $wtps->id], 'files'=>true]) !!}
 				<div class="modal-header">
-			    	<h4 class="modal-title">View</h4>
+			    	<h4 class="modal-title">Edit Entry</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Applicant Name') !!}
-				    				{!! Form::text('applicant_name',$cutperms->applicant_name,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('applicant_name',$wtps->applicant_name,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Area') !!}
-				    				{!! Form::text('area',$cutperms->area,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::label('','Proof of Acquisition(image)') !!}
+				    				{!! Form::file('proofofacquisition',null,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -390,7 +390,15 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Location') !!}
-				    				{!! Form::text('location',$cutperms->location,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('location',$wtps->location,['class'=>'form-control', 'readonly']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Destination') !!}
+				    				{!! Form::text('destination',$wtps->destination,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -398,23 +406,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{!! Form::text('status',$cutperms->status,['class'=>'form-control', 'readonly']) !!}
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Permit Type') !!}
-				    				{{ App\Models\permit_type::find($cutperms->permit_type)->permittype }}
-				    			</div>
-				    		</div>
-				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Date Awarded') !!}
-				    				{!! Form::date('date_award',$cutperms->date_award,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('status',$wtps->status,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -422,7 +414,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Map file(image)') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$cutperms->map_filepath) ?>"><img src="<?php echo asset('storage/'.$cutperms->map_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->map_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->map_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -430,15 +422,15 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Approved Documents file') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$cutperms->approveddocs_filepath) ?>"><img src="<?php echo asset('storage/'.$cutperms->approveddocs_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->approveddocs_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->approveddocs_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Volume') !!}
-				    				{!! Form::text('volume',$cutperms->volume,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::label('','Number of Wildlife') !!}
+				    				{!! Form::text('numberofwildlife',$wtps->numberofwildlife,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -446,23 +438,31 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Species') !!}
-				    				{!! Form::text('species',$cutperms->species,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('species',$wtps->species,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Cutting Permit No.') !!}
-				    				{!! Form::text('cutting_permitnum',$cutperms->cutting_permitnum,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::label('','Inspection Report') !!}
+				    				{!! Form::file('inspection_image',null,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Date Approved') !!}
-				    				{!! Form::date('date_approved',$cutperms->date_approved,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::label('','Permit No.') !!}
+				    				{!! Form::text('permitnumber',$wtps->permitnumber,['class'=>'form-control', 'readonly']) !!}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Date Issued') !!}
+				    				{!! Form::date('dateissued',$wtps->dateissued,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -470,7 +470,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Certification Fee') !!}
-				    				{!! Form::text('certification_fee',$cutperms->certification_fee,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('certification_fee',$wtps->certification_fee,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -478,7 +478,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Office:') !!}
-				    				{{ App\Models\Offices::find($cutperms->office_id)->officename }}
+				    				{{ App\Models\Offices::find($sapaa->office_id)->officename }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -486,37 +486,29 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By:') !!}
-				    				{{ Form::text('encoded_by', Auth::user($cutperms->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user($wtps->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
 				    			</div>
 				    		</div>
 				    	</div>
-				    	<div class="row">
-				    		<div class="col-md-12">
-				    			<div class="form-group">
-				    				{!! Form::label('','Geotag Photos') !!}	
-				    				@foreach(App\Models\cuttingpermit_geotag::where('f_id', $cutperms->id)->get() as $gphoto)
-				    				<a target="_blank" href="<?php echo asset('storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('storage/'.$gphoto->filepath) ?>" alt="picture"></a>
-				    				@endforeach
-				    			</div>
-				    		</div>
-				    	</div>
-					</div>
-				    
-
 					</div>
 				    <div class="modal-footer">
+				{!! Form::submit('Save Entry',['class'=>'btn btn-primary']) !!}
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				    </div>    
 		    {!! Form::close() !!}
  					
 
  			</div>
+
  		</div>
+
+    	
+
  	</div>
 </div>
 @endforeach
 
-@foreach($cutperm as $cutperms)
+@foreach($wtp as $wtps)
 <div id="upload{{ $cutperms->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
@@ -529,14 +521,14 @@
 			    	</div>
 
 				<div class="modal-body">
-			    	{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\CuttingPermitController@upload_photo', $cutperms->id], 'files'=>true]) !!}
+			    	{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@upload_photo', $cutperms->id], 'files'=>true]) !!}
                             		<div class="form-group">
                                 		<label for="title">Image</label>
                                 		<input type="file" name="photos[]" class="form-control-file" multiple="">
                                 		@if($errors->has('files'))
                                     		<span class="help-block text-danger">{{ $errors->first('files') }}</span>
                                 		@endif
-                                		{{ Form::text('rec_id', $cutperms->id, ['class'=>'form-control', 'hidden']) }}
+                                		{{ Form::text('rec_id', $wtps->id, ['class'=>'form-control', 'hidden']) }}
                             		</div>
                             		<div class="text-center">
                                 		<button class="btn btn-primary">Upload</button>

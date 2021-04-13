@@ -11,6 +11,7 @@ use App\Http\Controllers\SAPAController;
 use App\Http\Controllers\FLAController;
 use App\Http\Controllers\FLAGTController;
 use App\Http\Controllers\CuttingPermitController;
+use App\Http\Controllers\WildlifeTransportPermitController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,3 +50,5 @@ Route::resource('flagt', FLAGTController::class);
 Route::POST('flagt.upphoto', [FLAGTController::class, 'upload_photo']);
 Route::resource('cuttingpermit', CuttingPermitController::class);
 Route::POST('cuttingpermit.upphoto', [CuttingPermitController::class, 'upload_photo']);
+Route::resource('wildlifetransportpermit', WildlifeTransportPermitController::class);
+Route::POST('wildlifetransportpermit.upphoto', [WildlifeTransportPermitController::class, 'upload_photo']);
