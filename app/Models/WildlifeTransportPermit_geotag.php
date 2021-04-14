@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class WildlifeTransportPermit_geotag extends Model
 {
     use HasFactory;
-    protected $table ='WildlifeTransportPermit_geotag';
+    protected $table ='wildlifetransportpermit_geotag';
     protected $guarded = [];
 
     public function WildlifeTransportPermit(){

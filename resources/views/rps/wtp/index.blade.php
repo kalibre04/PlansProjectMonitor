@@ -86,7 +86,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Proof of Acquisition(image)') !!}
+				    				{!! Form::label('','Proof of Acquisition(scanned file)') !!}
 				    				{!! Form::file('proofofacquisition',null,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
@@ -182,8 +182,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,null,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				{{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -327,8 +326,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,$wtps->office_id,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				{{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -359,7 +357,7 @@
 
 
 @foreach($wtp as $wtps)
-<div id="edit{{ $wtps->id }}" class="modal fade" role="dialog">
+<div id="view{{ $wtps->id }}" class="modal fade" role="dialog">
  	<div class="modal-dialog modal-lg">
 
 
@@ -381,8 +379,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Proof of Acquisition(image)') !!}
-				    				{!! Form::file('proofofacquisition',null,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::label('','Proof of Acquisition') !!}
+				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->proofacquisition_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->proofacquisition_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -446,7 +444,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Inspection Report') !!}
-				    				{!! Form::file('inspection_image',null,['class'=>'form-control', 'readonly']) !!}
+				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->inspectionreport_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->inspectionreport_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -487,6 +485,16 @@
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By:') !!}
 				    				{{ Form::text('encoded_by', Auth::user($wtps->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
+				    			</div>
+				    		</div>
+				    	</div>
+				    	<div class="row">
+				    		<div class="col-md-12">
+				    			<div class="form-group">
+				    				{!! Form::label('','Geotag Photos') !!}	
+				    				@foreach(App\Models\WildlifeTransportPermit_geotag::where('f_id', $wtps->id)->get() as $gphoto)
+				    				<a target="_blank" href="<?php echo asset('storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('storage/'.$gphoto->filepath) ?>" alt="picture"></a>
+				    				@endforeach
 				    			</div>
 				    		</div>
 				    	</div>

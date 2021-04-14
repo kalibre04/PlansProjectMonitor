@@ -79,7 +79,7 @@ return [
 
         'wildlifetransportpermit_geotag' => [
             'driver' => 'local',
-            'root' => storage_path('app/public/wtp_geotag'),
+            'root' => storage_path('app/public/wildlifetransportpermit_geotag'),
             'url' => env('APP_URL').'/storage',
             'visibility' => 'public',
         ],
