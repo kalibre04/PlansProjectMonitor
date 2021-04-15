@@ -12,6 +12,7 @@ use App\Http\Controllers\FLAController;
 use App\Http\Controllers\FLAGTController;
 use App\Http\Controllers\CuttingPermitController;
 use App\Http\Controllers\WildlifeTransportPermitController;
+use App\Http\Controllers\WildlifeRegistrationController;
 
 /*
 |--------------------------------------------------------------------------
@@ -52,3 +53,5 @@ Route::resource('cuttingpermit', CuttingPermitController::class);
 Route::POST('cuttingpermit.upphoto', [CuttingPermitController::class, 'upload_photo']);
 Route::resource('wildlifetransportpermit', WildlifeTransportPermitController::class);
 Route::POST('wildlifetransportpermit.upphoto', [WildlifeTransportPermitController::class, 'upload_photo']);
+Route::resource('wildliferegistration', WildlifeRegistrationController::class);
+Route::POST('wildliferegistration.upphoto', [WildlifeRegistrationController::class, 'upload_photo']);

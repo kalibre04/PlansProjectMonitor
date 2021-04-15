@@ -164,15 +164,13 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,null,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				{{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				
 				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
@@ -286,15 +284,13 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,$flas->office_id,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				{{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				
 				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>

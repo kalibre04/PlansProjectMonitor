@@ -242,7 +242,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo asset('AdminLTE/pages/tables/jsgrid.html')?>" class="nav-link">
+                <a href="{{ url('wildliferegistration') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Wildlife Registration</p>
                 </a>
