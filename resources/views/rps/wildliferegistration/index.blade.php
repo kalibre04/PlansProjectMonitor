@@ -50,7 +50,7 @@
                   		<td>{{ $wildregs->location }}</td>
                   		<td>{{ $wildregs->status }}</td>
                   		<td>{{ $wildregs->numberofwildlife }}</td>
-                  		<td>{{ $wildregs->regnum }}</td>
+                  		<td>{{ $wildregs->regnumber }}</td>
                   		<td>{{ $wildregs->species }}</td>
                   		<td>{{ $wildregs->dateissued }}</td>
                   		<td>{{ $wildregs->certification_fee }}</td>
@@ -263,7 +263,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Registration No.') !!}
-				    				{!! Form::text('regnumber',$wildregs->regnummber,['class'=>'form-control']) !!}
+				    				{!! Form::text('regnumber',$wildregs->regnumber,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -333,7 +333,7 @@
  			<div class="modal-body">
  			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeRegistrationController@update', $wildregs->id], 'files'=>true]) !!}
 				<div class="modal-header">
-			    	<h4 class="modal-title">Edit Entry</h4>
+			    	<h4 class="modal-title">View Details</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="modal-body">
