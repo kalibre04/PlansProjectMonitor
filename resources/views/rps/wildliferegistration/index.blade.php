@@ -437,7 +437,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By:') !!}
-				    				{{ App\Models\Auth::user($wildregs->encoded_by)->name }}
+				    				{{ Auth::user($wildregs->encoded_by)->name }}
 				    			</div>
 				    		</div>
 				    	</div>

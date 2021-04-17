@@ -47,52 +47,45 @@ class WildlifeRegistrationController extends Controller
                     'docs_image' => 'required',
                     'map_image' => 'required',
                     'applicant_name' => 'required',
-                    'proofofacquisition' => 'required', 
                     'location' => 'required',
                     'status' => 'required',
                     'dateissued' => 'required',
                     'inspection_image' => 'required',
-                    'permitnumber' => 'required',
+                    'regnumber' => 'required',
                     'species' => 'required'
         ]);
         
-        $wtp = new WildlifeTransportPermit();
+        $wildreg = new wildliferegistration();
 
         if($request->file()){
 
-            $proofofacquisition_filename = time().'.'. $request->proofofacquisition->getClientOriginalName();
-            $proofofacquisition_filepath = $request->file('proofofacquisition')->storeAs('WTPermitproofofacquisition', $proofofacquisition_filename, 'public');
-
             $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
-            $docs_filepath = $request->file('docs_image')->storeAs('WTPermits', $docs_filename, 'public');
+            $docs_filepath = $request->file('docs_image')->storeAs('WildReg', $docs_filename, 'public');
 
             $map_filename = time().'.'. $request->map_image->getClientOriginalName();
-            $map_filepath = $request->file('map_image')->storeAs('WTPermitMaps', $map_filename, 'public');
+            $map_filepath = $request->file('map_image')->storeAs('WildRegMaps', $map_filename, 'public');
 
             $inspectionreport_filename = time().'.'. $request->inspection_image->getClientOriginalName();
-            $inspectionreport_filepath = $request->file('inspection_image')->storeAs('WTPermitInsReport', $map_filename, 'public');
+            $inspectionreport_filepath = $request->file('inspection_image')->storeAs('WildRegInsReport', $map_filename, 'public');
 
 
-            $wtp->applicant_name = $request->get('applicant_name');
-            $wtp->proofacquisition_filename = $proofofacquisition_filename;
-            $wtp->proofacquisition_filepath = '/' .$proofofacquisition_filepath;
-            $wtp->location = $request->get('location');
-            $wtp->destination = $request->get('destination');
-            $wtp->status = $request->get('status');
-            $wtp->map_filename = $map_filename;
-            $wtp->map_filepath = '/'.$map_filepath;
-            $wtp->approveddocs_filename = $docs_filename;
-            $wtp->approveddocs_filepath = '/' .$docs_filepath;
-            $wtp->numberofwildlife = $request->get('numberofwildlife');
-            $wtp->species = $request->get('species');
-            $wtp->inspectionreport_filename = $inspectionreport_filename;
-            $wtp->inspectionreport_filepath = '/' .$inspectionreport_filepath;         
-            $wtp->permitnumber = $request->get('permitnumber');
-            $wtp->dateissued = $request->get('dateissued');
-            $wtp->certification_fee = $request->get('certification_fee');
-            $wtp->office_id = $request->get('office_id');
-            $wtp->encoded_by = $request->get('encoded_by');
-            $wtp->save();
+            $wildreg->applicant_name = $request->get('applicant_name');
+            $wildreg->location = $request->get('location');
+            $wildreg->status = $request->get('status');
+            $wildreg->map_filename = $map_filename;
+            $wildreg->map_filepath = '/'.$map_filepath;
+            $wildreg->approveddocs_filename = $docs_filename;
+            $wildreg->approveddocs_filepath = '/' .$docs_filepath;
+            $wildreg->numberofwildlife = $request->get('numberofwildlife');
+            $wildreg->species = $request->get('species');
+            $wildreg->regnumber = $request->get('regnumber');
+            $wildreg->inspectionreport_filename = $inspectionreport_filename;
+            $wildreg->inspectionreport_filepath = '/' .$inspectionreport_filepath;
+            $wildreg->dateissued = $request->get('dateissued');
+            $wildreg->certification_fee = $request->get('certification_fee');
+            $wildreg->office_id = $request->get('office_id');
+            $wildreg->encoded_by = $request->get('encoded_by');
+            $wildreg->save();
 
             return redirect()->back();
         }
