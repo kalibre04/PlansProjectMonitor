@@ -14,6 +14,7 @@ use App\Http\Controllers\CuttingPermitController;
 use App\Http\Controllers\WildlifeTransportPermitController;
 use App\Http\Controllers\WildlifeRegistrationController;
 use App\Http\Controllers\OtherPermitsController;
+use App\Http\Controllers\ClaimsAndConflictController;
 
 /*
 |--------------------------------------------------------------------------
@@ -58,3 +59,4 @@ Route::resource('wildliferegistration', WildlifeRegistrationController::class);
 Route::POST('wildliferegistration.upphoto', [WildlifeRegistrationController::class, 'upload_photo']);
 Route::resource('otherpermits', OtherPermitsController::class);
 Route::POST('otherpermits.upphoto', [OtherPermitsController::class, 'upload_photo']);
+Route::resource('claimsandconflict', ClaimsAndConflictController::class);

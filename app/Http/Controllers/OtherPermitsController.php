@@ -208,6 +208,8 @@ class OtherPermitsController extends Controller
             $otherperm->office_id = $request->get('office_id');
             $otherperm->encoded_by = $request->get('encoded_by');
             $otherperm->save();
+
+            return redirect()->back();
         }
 
 

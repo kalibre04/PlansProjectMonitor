@@ -254,9 +254,9 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo asset('AdminLTE/pages/tables/jsgrid.html')?>" class="nav-link">
+                <a href="{{ url('claimsandconflict') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Chainsaw Registration</p>
+                  <p>Claims and Conflict</p>
                 </a>
               </li>
             </ul>
