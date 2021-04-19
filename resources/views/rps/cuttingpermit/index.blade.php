@@ -374,7 +374,7 @@
  			<div class="modal-body">
  				{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\CuttingPermitController@show', $cutperms->id], 'files'=>true]) !!}
 				<div class="modal-header">
-			    	<h4 class="modal-title">View</h4>
+			    	<h4 class="modal-title">View Details</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="row">

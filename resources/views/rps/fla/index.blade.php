@@ -323,7 +323,7 @@
  			<div class="modal-body">
  				{!! Form::open(['method'=>'POST', 'action'=>['App\Http\Controllers\FLAController@show', $flas->id], 'files'=>true]) !!}
 							<div class="modal-header">
-			    	<h4 class="modal-title">Edit Entry</h4>
+			    	<h4 class="modal-title">View Details</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="row">

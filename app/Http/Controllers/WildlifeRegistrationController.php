@@ -56,7 +56,6 @@ class WildlifeRegistrationController extends Controller
         ]);
         
         $wildreg = new wildliferegistration();
-
         if($request->file()){
 
             $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
@@ -140,9 +139,7 @@ class WildlifeRegistrationController extends Controller
                     'inspection_image' => 'required',
                     'regnumber' => 'required',
                     'species' => 'required'
-        ]);
-
-
+            ]);
 
             $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
             $docs_filepath = $request->file('docs_image')->storeAs('WildReg', $docs_filename, 'public');

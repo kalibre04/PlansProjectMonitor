@@ -365,7 +365,7 @@
  			<div class="modal-body">
  			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\WildlifeTransportPermitController@update', $wtps->id], 'files'=>true]) !!}
 				<div class="modal-header">
-			    	<h4 class="modal-title">Edit Entry</h4>
+			    	<h4 class="modal-title">View Details</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="row">
@@ -500,9 +500,9 @@
 				    	</div>
 					</div>
 				    <div class="modal-footer">
-				{!! Form::submit('Save Entry',['class'=>'btn btn-primary']) !!}
 				        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 				    </div>    
+				       
 		    {!! Form::close() !!}
  					
 
