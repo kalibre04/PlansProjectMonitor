@@ -289,12 +289,6 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="<?php echo asset('AdminLTE/pages/tables/jsgrid.html')?>" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>LAWIN</p>
-                </a>
-              </li>
-              <li class="nav-item">
                 <a href="{{ url('/monitoringstation') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Monitoring Station</p>
