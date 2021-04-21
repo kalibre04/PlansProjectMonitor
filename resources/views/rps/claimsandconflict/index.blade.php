@@ -340,7 +340,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','CSW Report file') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$cncs->cswreport_filepath) ?>"><img src="<?php echo asset('storage/'.$cncs->cswreport_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$cncs->cswreport_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$cncs->cswreport_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>

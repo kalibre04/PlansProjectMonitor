@@ -31,7 +31,7 @@
                   		<td>{{ $chainreg->serialnum }}</td>
                   		<td>{{ $chainreg->dateregistered }}</td>
                   		<td>{{ $chainreg->expirationdate }}</td>
-                  		<td><a target="_blank" href="<?php echo asset('storage/'.$chainreg->filepath) ?>"><img src="<?php echo asset('storage/'.$chainreg->filepath) ?>" alt="picture"></a></td>
+                  		<td><a target="_blank" href="<?php echo asset('/public/storage/'.$chainreg->filepath) ?>"><img src="<?php echo asset('/public/storage/'.$chainreg->filepath) ?>" alt="picture"></a></td>
                   		<td><a href="#view{{ $chainreg->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $chainreg->encoded_by)

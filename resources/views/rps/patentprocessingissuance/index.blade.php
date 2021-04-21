@@ -389,7 +389,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Application') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$patentprocessingissuance->application_filepath) ?>"><img src="<?php echo asset('storage/'.$patentprocessingissuance->application_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$patentprocessingissuance->application_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$patentprocessingissuance->application_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -470,7 +470,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Title') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$patentprocessingissuance->title_filepath) ?>"><img src="<?php echo asset('storage/'.$patentprocessingissuance->title_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$patentprocessingissuance->title_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$patentprocessingissuance->title_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -495,7 +495,7 @@
 				    			<div class="form-group">
 				    				{!! Form::label('','Geotag Photos') !!}	
 				    				@foreach(App\Models\Patent_Geotag::where('f_id', $patentprocessingissuance->id)->get() as $gphoto)
-				    				<a target="_blank" href="<?php echo asset('storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('storage/'.$gphoto->filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('/public/storage/'.$gphoto->filepath) ?>" alt="picture"></a>
 				    				
 				    				@endforeach
 				    			</div>

@@ -380,7 +380,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Proof of Acquisition') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->proofacquisition_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->proofacquisition_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$wtps->proofacquisition_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$wtps->proofacquisition_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -412,7 +412,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Map file(image)') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->map_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->map_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$wtps->map_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$wtps->map_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -420,7 +420,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Approved Documents file') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->approveddocs_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->approveddocs_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$wtps->approveddocs_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$wtps->approveddocs_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -444,7 +444,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Inspection Report') !!}
-				    				<a target="_blank" href="<?php echo asset('storage/'.$wtps->inspectionreport_filepath) ?>"><img src="<?php echo asset('storage/'.$wtps->inspectionreport_filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$wtps->inspectionreport_filepath) ?>"><img src="<?php echo asset('/public/storage/'.$wtps->inspectionreport_filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -493,7 +493,7 @@
 				    			<div class="form-group">
 				    				{!! Form::label('','Geotag Photos') !!}	
 				    				@foreach(App\Models\WildlifeTransportPermit_geotag::where('f_id', $wtps->id)->get() as $gphoto)
-				    				<a target="_blank" href="<?php echo asset('storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('storage/'.$gphoto->filepath) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$gphoto->filepath) ?>"><img src="<?php echo asset('/public/storage/'.$gphoto->filepath) ?>" alt="picture"></a>
 				    				@endforeach
 				    			</div>
 				    		</div>

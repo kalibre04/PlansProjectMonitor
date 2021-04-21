@@ -25,7 +25,7 @@
                   		<td>{{ App\Models\Offices::find($monstations->office_id)->officename }}</td>
                   		<td>{{ $monstations->location }}</td>
                   		<td>{{ $monstations->personnelassigned }}</td>
-                  		<td><a target="_blank" href="<?php echo asset('storage/'.$monstations->file_path) ?>"><img src="<?php echo asset('storage/'.$monstations->file_path) ?>" alt="picture"></a></td>
+                  		<td><a target="_blank" href="<?php echo asset('/public/storage/'.$monstations->file_path) ?>"><img src="<?php echo asset('/public/storage/'.$monstations->file_path) ?>" alt="picture"></a></td>
                   		<td><a href="#view{{ $monstations->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $monstations->encoded_by)
@@ -221,7 +221,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				<a target="_blank" href="<?php echo asset('storage/'.$monstations->file_path) ?>"><img src="<?php echo asset('storage/'.$monstations->file_path) ?>" alt="picture"></a>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$monstations->file_path) ?>"><img src="<?php echo asset('/public/storage/'.$monstations->file_path) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
