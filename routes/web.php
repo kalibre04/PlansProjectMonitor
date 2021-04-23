@@ -38,7 +38,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('home');
 
 
-
 Route::resource('casesfiled', CasesFiledController::class);
 Route::resource('apprehension', ApprehensionController::class);
 Route::resource('lumberdonation', LumberDonationController::class);
