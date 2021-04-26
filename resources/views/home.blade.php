@@ -12,7 +12,7 @@
               		<div class="card-header">
                 		<h3 class="card-title">
                   			<i class="far fa-chart-bar"></i>
-                 			Donut Chart
+                 			Patent Processing and Issuance Status Chart
                 		</h3>
 
                 		<div class="card-tools">
@@ -50,9 +50,8 @@
      */
 
     var donutData = [
-      { label: 'Series2', data: 30, color: '#3c8dbc' },
-      { label: 'Series3', data: 20, color: '#0073b7' },
-      { label: 'Series4', data: 50, color: '#00c0ef' }
+      { label: 'Completed', data: {{ count($cc) }}, color: '#3c8dbc' },
+      { label: 'Pending', data: {{ count($cp) }}, color: '#0073b7' }
     ]
     $.plot('#donut-chart', donutData, {
       series: {

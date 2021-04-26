@@ -15,6 +15,7 @@ use App\Http\Controllers\WildlifeTransportPermitController;
 use App\Http\Controllers\WildlifeRegistrationController;
 use App\Http\Controllers\OtherPermitsController;
 use App\Http\Controllers\ClaimsAndConflictController;
+use App\Models\PatentProcessingIssuance;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,9 @@ use App\Http\Controllers\ClaimsAndConflictController;
 
 
 Route::get('/', function () {
-    return view('home');
+    $cc = PatentProcessingIssuance::where('status', '=', 'Completed')->get();
+    $cp = PatentProcessingIssuance::where('status', '=', 'Pending')->get();
+    return view('home', compact('cc', 'cp'));
 });
 
 
