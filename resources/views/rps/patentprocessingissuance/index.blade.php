@@ -167,7 +167,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::text('status', null, ['class'=>'form-control']) }}
+				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending'), 'Approved', ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -312,7 +312,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::text('status', $patentprocessingissuance->status, ['class'=>'form-control']) }}
+				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending'), $patentprocessingissuance->status, ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
