@@ -54,7 +54,19 @@
                   		<td>{{ $wildregs->species }}</td>
                   		<td>{{ $wildregs->dateissued }}</td>
                   		<td>{{ $wildregs->certification_fee }}</td>
-                  		<td><a href="#view{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
+                  		<td><a href="#view{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+
+                  			@if(Auth::user()->id != $wildregs->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
+
+                  				@endif
+                  			@else
+                  			<a href="#edit{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  			<a href="#upload{{ $wildregs->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  			@endif
+                  		</td>
                   	</tr>
                   @endforeach
                   </tbody>                  

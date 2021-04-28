@@ -55,6 +55,8 @@
                   		<td><a href="#view{{ $patentprocessingissuance->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $patentprocessingissuance->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $patentprocessingissuance->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $patentprocessingissuance->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
 
                   			@else
                   			<a href="#edit{{ $patentprocessingissuance->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>

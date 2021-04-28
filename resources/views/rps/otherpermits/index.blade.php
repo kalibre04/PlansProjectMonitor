@@ -54,7 +54,19 @@
                   		<td>{{ $otherperms->species }}</td>
                   		<td>{{ $otherperms->dateissued }}</td>
                   		<td>{{ $otherperms->certification_fee }}</td>
-                  		<td><a href="#view{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
+                  		<td><a href="#view{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+
+                  			@if(Auth::user()->id != $otherperms->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
+
+                  				@endif
+                  			@else
+                  			<a href="#edit{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  			<a href="#upload{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  			@endif
+                  		</td>
                   	</tr>
                   @endforeach
                   </tbody>                  

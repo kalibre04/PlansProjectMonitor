@@ -55,10 +55,14 @@
                   		<td><a href="#view{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $sapaa->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
 
+                  				@endif
                   			@else
-                  			<a href="#edit{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
-                  			<a href="#upload{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				<a href="#edit{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  				<a href="#upload{{ $sapaa->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
                   			@endif
                   		</td>
                   	</tr>

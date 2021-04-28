@@ -54,7 +54,19 @@
                   		<td>{{ $wtps->species }}</td>
                   		<td>{{ $wtps->dateissued }}</td>
                   		<td>{{ $wtps->certification_fee }}</td>
-                  		<td><a href="#view{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a></td>
+                  		<td><a href="#view{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+
+                  			@if(Auth::user()->id != $wtps->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
+
+                  				@endif
+                  			@else
+                  			<a href="#edit{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  			<a href="#upload{{ $wtps->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  			@endif
+                  		</td>
                   	</tr>
                   @endforeach
                   </tbody>                  

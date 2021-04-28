@@ -30,14 +30,22 @@ use App\Models\PatentProcessingIssuance;
 
 
 Route::get('/', function () {
+
+
     $cc = PatentProcessingIssuance::where('status', '=', 'Completed')->get();
     $cp = PatentProcessingIssuance::where('status', '=', 'Pending')->get();
+    
+    
     return view('home', compact('cc', 'cp'));
 });
 
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
-    return view('home');
+Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
+    $cc = PatentProcessingIssuance::where('status', '=', 'Completed')->get();
+    $cp = PatentProcessingIssuance::where('status', '=', 'Pending')->get();
+    
+
+    return view('home', compact('cc', 'cp'));
 })->name('home');
 
 

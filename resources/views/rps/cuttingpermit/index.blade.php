@@ -57,7 +57,11 @@
                   		<td><a href="#view{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $cutperms->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
 
+                  				@endif
                   			@else
                   			<a href="#edit{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			<a href="#upload{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>

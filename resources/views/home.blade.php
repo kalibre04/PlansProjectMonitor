@@ -50,9 +50,11 @@
      */
 
     var donutData = [
-      { label: 'Completed', data: {{ count($cc) }}, color: '#3c8dbc' },
-      { label: 'Pending', data: {{ count($cp) }}, color: '#0073b7' }
+      { label: 'Completed', data: {!! count($cc) !!}, color: '#3c8dbc' },
+      { label: 'Pending', data: {!! count($cp) !!}, color: '#0073b7' }
     ]
+
+
     $.plot('#donut-chart', donutData, {
       series: {
         pie: {

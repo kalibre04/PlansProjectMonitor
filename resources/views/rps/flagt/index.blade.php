@@ -55,7 +55,11 @@
                   		<td><a href="#view{{ $flagts->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $flagts->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $flagts->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $flagts->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
 
+                  				@endif
                   			@else
                   			<a href="#edit{{ $flagts->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			<a href="#upload{{ $flagts->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>

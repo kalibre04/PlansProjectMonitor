@@ -54,7 +54,19 @@
                   		<td>{{ $cncs->lotsurveynum }}</td>
                   		<td>{{ $cncs->modedesposition }}</td>
                   		<td>{{ $cncs->personincharge }}</td>
-                  		<td><a href="#view{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a><a href="#edit{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a></td>
+                  		<td><a href="#view{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+
+                  			@if(Auth::user()->id != $cncs->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a><a href="#upload{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  				@else
+
+                  				@endif
+                  			@else
+                  			<a href="#edit{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  			<a href="#upload{{ $cncs->id }}" data-toggle="modal" class="btn btn-success btn-sm">Geotag Photos</a>
+                  			@endif
+                  		</td>
                   	</tr>
                   @endforeach
                   </tbody>                  
