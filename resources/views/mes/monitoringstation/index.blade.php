@@ -29,7 +29,11 @@
                   		<td><a href="#view{{ $monstations->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $monstations->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $monstations->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  				@else
 
+                  				@endif
                   			@else
                   			<a href="#edit{{ $monstations->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			@endif

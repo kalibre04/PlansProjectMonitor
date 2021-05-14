@@ -35,7 +35,11 @@
                   		<td><a href="#view{{ $chainreg->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $chainreg->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $chainreg->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  				@else
 
+                  				@endif
                   			@else
                   			<a href="#edit{{ $chainreg->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			@endif

@@ -2,7 +2,7 @@
 @section('content')
 <div class="card">
               <div class="card-header">
-                <h3 class="card-title">List of Apprehensions</h3>
+                <h3 class="card-title">List of LAWIN Patrollers</h3>
               </div>
               <!-- /.card-header -->
         <div class="card-body">
@@ -11,37 +11,29 @@
                   <thead>
                   <tr>
                     <th>ID</th>
-                    <th>Date Apprehended</th>
-                    <th>Apprehending Officer</th>
-                    <th>Location</th>
-                    <th>Volume</th>
-                    <th>Estimated Value</th>
-                    <th>Office</th>
-                    <th>Encoded By</th>
+                    <th>Fullname</th>
+                    <th>Position</th>
+                    <th>Office</th>                  
                     <th>Action</th>
-                    
                   </tr>
                   </thead>
                   <tbody>
-                  @foreach($apprehension as $apprehend)
+                  @foreach($patrollers as $patroller)
                   	<tr>
-                  		<td>{{ $apprehend->id }}</td>
-                  		<td>{{ $apprehend->date_apprehended }}</td>
-                  		<td>{{ $apprehend->appre_officer }}</td>
-                  		<td>{{ $apprehend->location }}</td>
-                  		<td>{{ $apprehend->volume }}</td>
-                  		<td>{{ $apprehend->estimatedvalue }}</td>
-                  		<td>{{ App\Models\Offices::find($apprehend->office_id)->officename }}</td>
-                  		<td>{{ Auth::user($apprehend->encoded_by)->name }}</td>
+                  		<td>{{ $patroller->id }}</td>
+                  		<td>{{ $patroller->fullname }}</td>
+                  		<td>{{ $patroller->position }}</td>
+                  		<td>{{ $patroller->office_id }}</td>
+                  		<td>{{ App\Models\Offices::find($patroller->office_id)->officename }}</td>
                   		<td><a href="#view{{ $apprehend->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
-                  			@if(Auth::user()->id != $apprehend->encoded_by)
+                  			@if(Auth::user()->id != $patroller->encoded_by)
                   				@if(Auth::user()->acctype == '165')
-                  					<a href="#edit{{ $apprehend->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  					<a href="#edit{{ $patroller->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   				@else
 
                   				@endif
                   			@else
-                  			<a href="#edit{{ $apprehend->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  			<a href="#edit{{ $patroller->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			@endif
                   		</td>
                   	</tr>

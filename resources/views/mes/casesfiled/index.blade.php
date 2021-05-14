@@ -37,7 +37,11 @@
                   		<td><a href="#view{{ $casefiled->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $casefiled->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $casefiled->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  				@else
 
+                  				@endif
                   			@else
                   			<a href="#edit{{ $casefiled->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			@endif
