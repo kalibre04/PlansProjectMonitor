@@ -59,13 +59,13 @@ class MonitoringStationController extends Controller
         $monstation = new MonitoringStation;
 
         if($request->file()){
-            $filename = $request->photo->getClientOriginalName();
+            $filename = time().'.'. $request->photo->getClientOriginalName();
             $filepath = $request->file('photo')->storeAs('monitoringstations', $filename, 'public');
 
             $monstation->location = $request->get('location');
             $monstation->personnelassigned = $request->get('personnelassigned');
             $monstation->office_id = $request->get('office_id');
-            $monstation->filename = $request->photo->getClientOriginalName();
+            $monstation->filename = $filename;
             $monstation->file_path = $filepath;
             $monstation->encoded_by = $request->get('encoded_by');
             $monstation->save();

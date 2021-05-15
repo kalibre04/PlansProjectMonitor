@@ -15,6 +15,7 @@ use App\Http\Controllers\WildlifeTransportPermitController;
 use App\Http\Controllers\WildlifeRegistrationController;
 use App\Http\Controllers\OtherPermitsController;
 use App\Http\Controllers\ClaimsAndConflictController;
+use App\Http\Controllers\LawinPatrollersController;
 use App\Models\PatentProcessingIssuance;
 
 /*
@@ -71,3 +72,4 @@ Route::POST('wildliferegistration.upphoto', [WildlifeRegistrationController::cla
 Route::resource('otherpermits', OtherPermitsController::class);
 Route::POST('otherpermits.upphoto', [OtherPermitsController::class, 'upload_photo']);
 Route::resource('claimsandconflict', ClaimsAndConflictController::class);
+Route::resource('lawinpatrollers', LawinPatrollersController::class);
