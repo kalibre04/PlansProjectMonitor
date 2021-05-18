@@ -50,7 +50,14 @@ class LawinPatrollersController extends Controller
      */
     public function store(Request $request)
     {
-         $patroller = new LawinPatrollers;
+
+        $validated = $request->validate([
+                    'fullname' => 'required',
+                    'position' => 'required',
+                    'photo' => 'required'
+        ]);
+
+        $patroller = new LawinPatrollers;
 
         if($request->file()){
             $filename = time().'.'. $request->photo->getClientOriginalName();
@@ -125,10 +132,11 @@ class LawinPatrollersController extends Controller
             $patroller->filepath = $filepath;
             $patroller->encoded_by = $request->get('encoded_by');
             $patroller->save();
-
+            
             return redirect()->back();
 
         } else{
+
 
             $patroller->fullname = $request->get('fullname');
             $patroller->position = $request->get('position');
