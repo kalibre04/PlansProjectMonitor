@@ -216,7 +216,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\ChainsawRegController@update', $chainreg->id]]) !!}
+ 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\ChainsawRegController@update', $chainreg->id],'files'=>true]) !!}
 				<div class="modal-header">
 			    	<h4 class="modal-title">Edit Chainsaw details</h4>
 			    </div>
