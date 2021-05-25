@@ -144,6 +144,9 @@ class ChainsawRegController extends Controller
             $filename = $request->photo->getClientOriginalName();
             $filepath = $request->file('photo')->storeAs('chainsawinventory', $filename, 'public');
 
+            $oldfile = $chainregs->filename;
+            Storage::delete('public/chainsawinventory/' . $oldfile);
+
             $chainregs->name = $request->get('name');
             $chainregs->address = $request->get('address');
             $chainregs->dateacquired = $request->get('dateacquired');

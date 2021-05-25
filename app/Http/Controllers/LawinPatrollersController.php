@@ -8,9 +8,12 @@ use App\Models\LawinPatrollers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
+
 use DB;
 use Validator;
 use Carbon\Carbon;
+
+
 
 class LawinPatrollersController extends Controller
 {
@@ -124,6 +127,10 @@ class LawinPatrollersController extends Controller
         if($request->file()){
             $filename = time().'.'. $request->photo->getClientOriginalName();
             $filepath = $request->file('photo')->storeAs('LawinPatrollersPhoto', $filename, 'public');
+
+            $oldfile = $patroller1->filename;
+
+            Storage::delete('public/LawinPatrollersPhoto/' . $oldfile);
 
             $patroller->fullname = $request->get('fullname');
             $patroller->position = $request->get('position');
