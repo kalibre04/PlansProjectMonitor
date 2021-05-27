@@ -141,7 +141,7 @@ class ChainsawRegController extends Controller
         $chainregss = ChainsawInventory::find($id);
 
         if($request->file()){
-            $filename = $request->photo->getClientOriginalName();
+            $filename = time().'.'. $request->photo->getClientOriginalName();
             $filepath = $request->file('photo')->storeAs('chainsawinventory', $filename, 'public');
 
             $oldfile = $chainregs->filename;

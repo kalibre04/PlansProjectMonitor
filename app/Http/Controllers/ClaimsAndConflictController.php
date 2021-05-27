@@ -134,6 +134,9 @@ class ClaimsAndConflictController extends Controller
             $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
             $docs_filepath = $request->file('docs_image')->storeAs('ClaimsAndConflictDocs', $docs_filename, 'public');
 
+            $olddocsfile = $cnc->cswreport_filename;
+            Storage::delete('public/ClaimsAndConflictDocs/' . $olddocsfile);
+
             $cnc->parties = $request->get('parties');
             $cnc->status = $request->get('status');
             $cnc->location = $request->get('location');

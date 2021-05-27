@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\WildlifeTransportPermit;
 use App\Models\WildlifeTransportPermit_geotag;
@@ -161,6 +162,17 @@ class WildlifeTransportPermitController extends Controller
             $inspectionreport_filename = time().'.'. $request->inspection_image->getClientOriginalName();
             $inspectionreport_filepath = $request->file('inspection_image')->storeAs('WTPermitInsReport', $map_filename, 'public');
 
+            $oldprooffile = $wtp->proofacquisition_filename;
+            Storage::delete('public/WTPermitproofofacquisition/' . $oldprooffile);
+
+            $olddocsfile = $wtp->approveddocs_filename;
+            Storage::delete('public/WTPermits/' . $olddocsfile);
+
+            $oldmapfile = $wtp->map_filename;
+            Storage::delete('public/WTPermitMaps/' . $oldmapfile);
+
+            $oldinsreportfile = $wtp->inspectionreport_filename;
+            Storage::delete('public/WTPermitInsReport/' . $oldinsreportfile);
 
             $wtp->applicant_name = $request->get('applicant_name');
             $wtp->proofacquisition_filename = $proofofacquisition_filename;

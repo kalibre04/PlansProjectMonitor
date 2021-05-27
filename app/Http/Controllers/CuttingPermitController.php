@@ -164,6 +164,11 @@ class CuttingPermitController extends Controller
             $map_filename = time().'.'. $request->map_image->getClientOriginalName();
             $map_filepath = $request->file('map_image')->storeAs('CuttingPermitMaps', $map_filename, 'public');
 
+            $olddocsfile = $cutperm->approveddocs_filename;
+            Storage::delete('public/CuttingPermitDocs/' . $olddocsfile);
+
+            $oldmapfile = $cutperm->map_filename;
+            Storage::delete('public/CuttingPermitMaps/' . $oldmapfile);
 
             $cutperm->applicant_name = $request->get('applicant_name');
             $cutperm->area = $request->get('area');

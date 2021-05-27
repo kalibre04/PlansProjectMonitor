@@ -140,10 +140,17 @@ class SAPAController extends Controller
         $sapaa_1 = sapa::find($id);
 
         if($request->file()){
-            $docs_filename = $request->docs_image->getClientOriginalName();
+            $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
             $docs_filepath = $request->file('docs_image')->storeAs('sapaDocs', $docs_filename, 'public');
-            $map_filename = $request->map_image->getClientOriginalName();
+            $map_filename = time().'.'. $request->map_image->getClientOriginalName();
             $map_filepath = $request->file('map_image')->storeAs('sapaMaps', $map_filename, 'public');
+
+            $olddocsfile = $sapaa->approveddocs_filename;
+            Storage::delete('public/sapaDocs/' . $olddocsfile);
+
+            $oldmapfile = $sapaa->map_filename;
+            Storage::delete('public/sapaMaps/' . $oldmapfile);
+
 
             $sapaa->applicant_name = $request->get('applicant_name');
             $sapaa->area = $request->get('area');

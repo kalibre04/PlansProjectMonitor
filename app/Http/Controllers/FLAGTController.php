@@ -141,46 +141,53 @@ class FLAGTController extends Controller
         $flagt_1 = flagt::find($id);
 
         if($request->file()){
-            $docs_filename = $request->docs_image->getClientOriginalName();
+            $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
             $docs_filepath = $request->file('docs_image')->storeAs('flagtDocs', $docs_filename, 'public');
-            $map_filename = $request->map_image->getClientOriginalName();
+            $map_filename = time().'.'. $request->map_image->getClientOriginalName();
             $map_filepath = $request->file('map_image')->storeAs('flagtMaps', $map_filename, 'public');
 
-            $fla->applicant_name = $request->get('applicant_name');
-            $fla->area = $request->get('area');
-            $fla->location = $request->get('location');
-            $fla->status = $request->get('status');
-            $fla->date_award = $request->get('date_award');
-            $fla->map_filename = $map_filename;
-            $fla->map_filepath = '/'.$map_filepath;
-            $fla->approvedfladocs_filename = $docs_filename;
-            $fla->approvedfladocs_filepath = '/' .$docs_filepath;
-            $fla->rentalfee = $request->get('rentalfee');
-            $fla->term = $request->get('term');         
-            $fla->expirationdate = $request->get('expirationdate');
-            $fla->office_id = $request->get('office_id');
-            $fla->encoded_by = $request->get('encoded_by');
-            $fla->save();
+            $olddocsfile = $flagt->approveddocs_filename;
+            Storage::delete('public/flagtDocs/' . $olddocsfile);
+
+            $oldmapfile = $flagt->map_filename;
+            Storage::delete('public/flagtMaps/' . $oldmapfile);
+
+
+            $flagt->applicant_name = $request->get('applicant_name');
+            $flagt->area = $request->get('area');
+            $flagt->location = $request->get('location');
+            $flagt->status = $request->get('status');
+            $flagt->date_award = $request->get('date_award');
+            $flagt->map_filename = $map_filename;
+            $flagt->map_filepath = '/'.$map_filepath;
+            $flagt->approveddocs_filename = $docs_filename;
+            $flagt->approveddocs_filepath = '/' .$docs_filepath;
+            $flagt->rentalfee = $request->get('rentalfee');
+            $flagt->term = $request->get('term');         
+            $flagt->expirationdate = $request->get('expirationdate');
+            $flagt->office_id = $request->get('office_id');
+            $flagt->encoded_by = $request->get('encoded_by');
+            $flagt->save();
 
             return redirect()->back();
 
         } else{
 
-            $fla->applicant_name = $request->get('applicant_name');
-            $fla->area = $request->get('area');
-            $fla->location = $request->get('location');
-            $fla->status = $request->get('status');
-            $fla->date_award = $request->get('date_award');
-            $fla->map_filename = $fla_1->map_filename;
-            $fla->map_filepath = $fla_1->map_filepath;
-            $fla->approvedfladocs_filename = $flagt_1->approveddocs_filename;
-            $fla->approvedfladocs_filepath = $flagt_1->approveddocs_filepath;
-            $fla->rentalfee = $request->get('rentalfee');
-            $fla->term = $request->get('term');         
-            $fla->expirationdate = $request->get('expirationdate');
-            $fla->office_id = $request->get('office_id');
-            $fla->encoded_by = $request->get('encoded_by');
-            $fla->save();
+            $flagt->applicant_name = $request->get('applicant_name');
+            $flagt->area = $request->get('area');
+            $flagt->location = $request->get('location');
+            $flagt->status = $request->get('status');
+            $flagt->date_award = $request->get('date_award');
+            $flagt->map_filename = $fla_1->map_filename;
+            $flagt->map_filepath = $fla_1->map_filepath;
+            $flagt->approvedfladocs_filename = $flagt_1->approveddocs_filename;
+            $flagt->approvedfladocs_filepath = $flagt_1->approveddocs_filepath;
+            $flagt->rentalfee = $request->get('rentalfee');
+            $flagt->term = $request->get('term');         
+            $flagt->expirationdate = $request->get('expirationdate');
+            $flagt->office_id = $request->get('office_id');
+            $flagt->encoded_by = $request->get('encoded_by');
+            $flagt->save();
 
             return redirect()->back();
         }

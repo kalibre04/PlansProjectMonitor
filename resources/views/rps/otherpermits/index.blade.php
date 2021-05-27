@@ -54,7 +54,7 @@
                   		<td>{{ $otherperms->species }}</td>
                   		<td>{{ $otherperms->dateissued }}</td>
                   		<td>{{ $otherperms->certification_fee }}</td>
-                  		<td><a href="#view{{ $cutperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+                  		<td><a href="#view{{ $otherperms->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $otherperms->encoded_by)
                   				@if(Auth::user()->acctype == '165')

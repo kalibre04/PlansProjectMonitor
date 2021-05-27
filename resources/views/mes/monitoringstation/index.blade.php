@@ -128,7 +128,8 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				<label>Office</label>
-				    				<input name='office_id' value='{{ App\Models\Offices::find($monstations->office_id)->officename }}' readonly="true"></input>
+				    				{{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
+				    				{{ App\Models\Offices::find($monstations->office_id)->officename }}
 				    			</div>
 				    		</div>
 				    	</div>

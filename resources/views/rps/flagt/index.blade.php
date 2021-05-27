@@ -200,7 +200,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\FLAController@update', $flagts->id], 'files'=>true]) !!}
+ 			{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\FLAGTController@update', $flagts->id], 'files'=>true]) !!}
 				<div class="modal-header">
 			    	<h4 class="modal-title">Edit Entry</h4>
 			    </div>

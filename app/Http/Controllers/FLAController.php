@@ -141,10 +141,17 @@ class FLAController extends Controller
         $fla_1 = fla::find($id);
 
         if($request->file()){
-            $docs_filename = $request->docs_image->getClientOriginalName();
+            $docs_filename = time().'.'. $request->docs_image->getClientOriginalName();
             $docs_filepath = $request->file('docs_image')->storeAs('flaDocs', $docs_filename, 'public');
-            $map_filename = $request->map_image->getClientOriginalName();
+            $map_filename = time().'.'. $request->map_image->getClientOriginalName();
             $map_filepath = $request->file('map_image')->storeAs('flaMaps', $map_filename, 'public');
+
+            $olddocsfile = $fla->approvedfladocs_filename;
+            Storage::delete('public/flaDocs/' . $olddocsfile);
+
+            $oldmapfile = $fla->map_filename;
+            Storage::delete('public/flaMaps/' . $oldmapfile);
+
 
             $fla->applicant_name = $request->get('applicant_name');
             $fla->area = $request->get('area');

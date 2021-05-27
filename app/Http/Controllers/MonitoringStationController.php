@@ -129,8 +129,14 @@ class MonitoringStationController extends Controller
 
         if($request->file()){
 
-            $filename = $request->photo->getClientOriginalName();
+            $filename = time().'.'. $request->photo->getClientOriginalName();
             $filepath = $request->file('photo')->storeAs('monitoringstations', $filename, 'public');
+
+            $oldfile = $monstations->filename;
+            Storage::delete('public/monitoringstations/' . $oldfile);
+
+
+
 
             $monstation->location = $request->location;
             $monstation->personnelassigned = $request->personnelassigned;

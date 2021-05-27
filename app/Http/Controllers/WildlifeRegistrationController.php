@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\wildliferegistration;
 use App\Models\wildliferegistration_geotag;
@@ -149,6 +150,17 @@ class WildlifeRegistrationController extends Controller
 
             $inspectionreport_filename = time().'.'. $request->inspection_image->getClientOriginalName();
             $inspectionreport_filepath = $request->file('inspection_image')->storeAs('WildRegInsReport', $map_filename, 'public');
+
+
+            $olddocsfile = $wildreg->approveddocs_filename;
+            Storage::delete('public/WildReg/' . $olddocsfile);
+
+            $oldmapfile = $wildreg->map_filename;
+            Storage::delete('public/WildRegMaps/' . $oldmapfile);
+
+            $oldinsreportfile = $wildreg->inspectionreport_filename;
+            Storage::delete('public/WildRegInsReport/' . $oldinsreportfile);
+
 
 
             $wildreg->applicant_name = $request->get('applicant_name');

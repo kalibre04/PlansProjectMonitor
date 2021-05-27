@@ -158,6 +158,14 @@ class OtherPermitsController extends Controller
             $inspectionreport_filename = time().'.'. $request->inspection_image->getClientOriginalName();
             $inspectionreport_filepath = $request->file('inspection_image')->storeAs('OtherPermitsInsReport', $map_filename, 'public');
 
+            $olddocsfile = $otherperm->approveddocs_filename;
+            Storage::delete('public/OtherPermits/' . $olddocsfile);
+
+            $oldmapfile = $otherperm->map_filename;
+            Storage::delete('public/OtherPermitsMaps/' . $oldmapfile);
+
+            $oldinsreportfile = $otherperm->insreport_filename;
+            Storage::delete('public/OtherPermitsInsReport/' . $oldinsreportfile);
 
             $otherperm->applicant_name = $request->get('applicant_name');
             $otherperm->location = $request->get('location');

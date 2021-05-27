@@ -227,6 +227,11 @@ class PatentProcessingAndIssuanceController extends Controller
             $title_filename = time().'.'. $request->title_image->getClientOriginalName();
             $title_filepath = $request->file('title_image')->storeAs('titles', $title_filename, 'public');
 
+            $oldappfile = $ppi->application_filename;
+            Storage::delete('public/applicationForms/' . $oldappfile);
+
+            $oldtitlefile = $ppi->title_filename;
+            Storage::delete('public/titles/' . $oldtitlefile);      
 
             $ppi->name = $request->get('name');
             $ppi->application_filename = $application_filename;
