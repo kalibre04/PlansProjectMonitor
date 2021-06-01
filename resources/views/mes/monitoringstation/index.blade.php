@@ -160,8 +160,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -195,14 +194,14 @@
  			<div class="modal-body">
  				{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\MonitoringStationController@update', $monstations->id]]) !!}
 			    <div class="modal-header">
-			    	<h4 class="modal-title">Add Entry</h4>
+			    	<h4 class="modal-title">View Entry</h4>
 			    </div>
 			    <div class="modal-body">
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Office') !!}
-				    				{!! Form::select('office_id',$offices,$monstations->office_id,['class'=>'search-office', 'style'=>'width: 100%']) !!}
+				    				<label>Office</label>
+				    				<input name='office_id' value='{{ App\Models\Offices::find($monstations->office_id)->officename }}' readonly="true"></input>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -210,7 +209,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Location') !!}
-				    				{!! Form::text('location', $monstations->location, ['class'=>'form-control']); !!}
+				    				{!! Form::text('location', $monstations->location, ['class'=>'form-control', 'readonly']); !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -218,7 +217,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Personnel Assigned') !!}
-				    				{!! Form::text('personnelassigned',$monstations->personnelassigned,['class'=>'form-control']) !!}
+				    				{!! Form::text('personnelassigned',$monstations->personnelassigned,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -233,7 +232,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user($monstations->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
 				    			</div>
 				    		</div>
 				    	</div>

@@ -31,9 +31,16 @@
                   		<td><a href="#view{{ $lumberdonated->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
 
                   			@if(Auth::user()->id != $lumberdonated->encoded_by)
+                  				@if(Auth::user()->acctype == '165')
+                  					<a href="#edit{{ $lumberdonated->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  					
+                  				@else
+
+                  				@endif
+
 
                   			@else
-                  			<a href="#edit{{ $lumberdonated->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
+                  				<a href="#edit{{ $lumberdonated->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
                   			@endif
                   		</td>
                   	</tr>
@@ -188,8 +195,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -278,7 +284,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user($lumberdonated->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
 				    			</div>
 				    		</div>
 				    	</div>

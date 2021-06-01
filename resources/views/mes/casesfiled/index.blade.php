@@ -124,8 +124,7 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -159,7 +158,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Respondent') !!}
-				    				{!! Form::text('repondent',$casefiled->respondent,['class'=>'form-control']) !!}
+				    				{!! Form::text('respondent',$casefiled->respondent,['class'=>'form-control']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -214,8 +213,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -256,7 +255,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Respondent') !!}
-				    				{!! Form::text('repondent',$casefiled->respondent,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::text('respondent',$casefiled->respondent,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -311,8 +310,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				<label>Encoded By:</label>
+				    				{{ Form::text('encoded_by', Auth::user($casefiled->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
 				    			</div>
 				    		</div>
 				    	</div>

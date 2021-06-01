@@ -344,8 +344,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control']) }}
+				    				
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -377,7 +377,7 @@
  			<div class="modal-body">
  				{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\MonitoringStationController@store', $chainreg->id]]) !!}
 				<div class="modal-header">
-			    	<h4 class="modal-title">Edit Chainsaw details</h4>
+			    	<h4 class="modal-title">View Chainsaw details</h4>
 			    </div>
 			    <div class="modal-body">
 			    		<div class="row">
@@ -495,8 +495,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Photo') !!}
-				    				{!! Form::file('photo',null,['class'=>'form-control']) !!}
+				    				<label>Photo</label>
+				    				<a target="_blank" href="<?php echo asset('/public/storage/'.$chainreg->filepath) ?>"><img src="<?php echo asset('/public/storage/'.$chainreg->filepath) ?>" alt="picture"></a>
 				    			</div>
 				    		</div>
 				    	</div>
@@ -504,7 +504,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				{{ Form::text('encoded_by', Auth::user($chainreg->encoded_by)->name, ['class'=>'form-control', 'readonly']) }}
 				    			</div>
 				    		</div>
 				    	</div>
