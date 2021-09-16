@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\fla;
 use App\Models\fla_geotag;
 use App\Models\Offices;
+use App\Models\status_tbl;
 
 class FLAController extends Controller
 {
