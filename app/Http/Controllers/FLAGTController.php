@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\flagt;
 use App\Models\flagt_geotag;
 use App\Models\Offices;
+use App\Models\status_tbl;
 
 class FLAGTController extends Controller
 {
@@ -27,8 +28,9 @@ class FLAGTController extends Controller
     {
         $flagt = flagt::all();
         $offices = Offices::all()->pluck('officename', 'id');
+        $status = status_tbl::all()->pluck('status', 'id');
 
-        return view('rps/flagt.index', compact('flagt', 'offices'));
+        return view('rps/flagt.index', compact('flagt', 'offices', 'status'));
     }
 
     /**

@@ -113,7 +113,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending', 'Cancelled'=>'Cancelled'), 'Approved', ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, 'Approved', ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -233,7 +233,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending'), $flagts->status, ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, $flagts->status, ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -406,7 +406,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Expiry Date') !!}
-				    				{!! Form::date('expirydate',$flagts->expirydate,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::date('expirydate',$flagts->expirationdate,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>

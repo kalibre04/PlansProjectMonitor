@@ -115,7 +115,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending', 'Cancelled'=>'Cancelled'), 'Approved', ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, 'Approved', ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -260,7 +260,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending', 'Cancelled'=>'Cancelled'), $cutperms->status, ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, $cutperms->status, ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -296,6 +296,7 @@
 				    			</div>
 				    		</div>
 				    	</div>
+				    	
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
