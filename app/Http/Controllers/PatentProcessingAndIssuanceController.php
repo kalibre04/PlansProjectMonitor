@@ -30,7 +30,7 @@ class PatentProcessingAndIssuanceController extends Controller
     {
         $patentprocessingissuances = PatentProcessingIssuance::all();
         $offices = Offices::all()->pluck('officename', 'id');
-
+        $status = 
         return view('rps/patentprocessingissuance.index', compact('patentprocessingissuances', 'offices'));
     }
 
