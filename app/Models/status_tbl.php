@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class status_tbl extends Model
 {
     use HasFactory;
-    protected $table ='sapa_geotag';
+    protected $table ='status_tbl';
     protected $guarded = [];
 }
