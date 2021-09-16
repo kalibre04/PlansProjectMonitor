@@ -171,7 +171,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending', 'Cancelled'=>'Cancelled'), 'Approved', ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, 'Approved', ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>

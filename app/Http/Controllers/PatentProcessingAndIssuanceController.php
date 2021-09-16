@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Offices;
 use App\Models\PatentProcessingIssuance;
 use App\Models\Patent_Geotag;
-
+use App\Models\status_tbl;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -30,8 +30,8 @@ class PatentProcessingAndIssuanceController extends Controller
     {
         $patentprocessingissuances = PatentProcessingIssuance::all();
         $offices = Offices::all()->pluck('officename', 'id');
-        $status = 
-        return view('rps/patentprocessingissuance.index', compact('patentprocessingissuances', 'offices'));
+        $status = status_tbl::all()->pluck('status');
+        return view('rps/patentprocessingissuance.index', compact('patentprocessingissuances', 'offices', 'status'));
     }
 
     /**
