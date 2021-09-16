@@ -406,7 +406,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Expiry Date') !!}
-				    				{!! Form::date('expirydate',$flas->expirydate,['class'=>'form-control', 'readonly']) !!}
+				    				{!! Form::date('expirydate',$flas->expirationdate,['class'=>'form-control', 'readonly']) !!}
 				    			</div>
 				    		</div>
 				    	</div>
