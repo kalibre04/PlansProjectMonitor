@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\sapa;
 use App\Models\sapa_geotag;
 use App\Models\Offices;
+use App\Models\status_tbl;
 
 class SAPAController extends Controller
 {
@@ -27,8 +28,9 @@ class SAPAController extends Controller
     {
         $sapa = sapa::all();
         $offices = Offices::all()->pluck('officename', 'id');
+        $status = status_tbl::all()->pluck('status', 'id');
 
-        return view('rps/sapa.index', compact('sapa', 'offices'));
+        return view('rps/sapa.index', compact('sapa', 'offices', 'status'));
     }
 
     /**
