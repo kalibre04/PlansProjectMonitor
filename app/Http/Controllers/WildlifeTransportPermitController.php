@@ -25,7 +25,7 @@ class WildlifeTransportPermitController extends Controller
         $wtp = WildlifeTransportPermit::all();
         $offices = Offices::all()->pluck('officename', 'id');
         $status = status_tbl::all()->pluck('status', 'status');
-        return view('rps/wtp.index', compact('wtp', 'offices'));
+        return view('rps/wtp.index', compact('wtp', 'offices', 'status'));
     }
 
     /**
