@@ -28,7 +28,7 @@ class FLAController extends Controller
     {
         $fla = fla::all();
         $offices = Offices::all()->pluck('officename', 'id');
-        $status = status_tbl::all()->pluck('status', 'id');
+        $status = status_tbl::all()->pluck('status', 'status');
 
         return view('rps/fla.index', compact('fla', 'offices', 'status'));
     }

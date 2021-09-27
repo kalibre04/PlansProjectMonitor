@@ -29,7 +29,7 @@ class CuttingPermitController extends Controller
         $cutperm = cutting_permits::all();
         $offices = Offices::all()->pluck('officename', 'id');
         $permittype = permit_type::all()->pluck('permittype', 'id');
-        $status = status_tbl::all()->pluck('status', 'id');
+        $status = status_tbl::all()->pluck('status', 'status');
 
         return view('rps/cuttingpermit.index', compact('cutperm', 'offices', 'permittype', 'status'));
     }

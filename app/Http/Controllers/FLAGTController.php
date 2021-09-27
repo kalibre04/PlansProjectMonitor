@@ -28,7 +28,7 @@ class FLAGTController extends Controller
     {
         $flagt = flagt::all();
         $offices = Offices::all()->pluck('officename', 'id');
-        $status = status_tbl::all()->pluck('status', 'id');
+        $status = status_tbl::all()->pluck('status', 'status');
 
         return view('rps/flagt.index', compact('flagt', 'offices', 'status'));
     }
