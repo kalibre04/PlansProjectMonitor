@@ -113,8 +113,8 @@
 				    	<div class="row">
 				    		<div class="col-md-12">
 				    			<div class="form-group">
-				    				{!! Form::label('','Encoded By') !!}
-				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly']) }}
+				    				
+				    				{{ Form::text('encoded_by', Auth::user()->id, ['class'=>'form-control', 'readonly', 'hidden']) }}
 				    			</div>
 				    		</div>
 				    	</div>
