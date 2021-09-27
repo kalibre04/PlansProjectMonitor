@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\wildliferegistration;
 use App\Models\wildliferegistration_geotag;
 use App\Models\Offices;
-
+use App\Models\status_tbl;
 class WildlifeRegistrationController extends Controller
 {
     /**
@@ -23,7 +23,8 @@ class WildlifeRegistrationController extends Controller
     {
         $wildreg = wildliferegistration::all();
         $offices = Offices::all()->pluck('officename', 'id');
-        return view('rps/wildliferegistration.index', compact('wildreg', 'offices'));
+        $status = status_tbl::all()->pluck('status', 'status');
+        return view('rps/wildliferegistration.index', compact('wildreg', 'offices','status'));
     }
 
     /**
