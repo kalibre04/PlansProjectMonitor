@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\WildlifeTransportPermit;
 use App\Models\WildlifeTransportPermit_geotag;
 use App\Models\Offices;
+use App\Models\status_tbl;
 
 class WildlifeTransportPermitController extends Controller
 {
@@ -23,6 +24,7 @@ class WildlifeTransportPermitController extends Controller
     {
         $wtp = WildlifeTransportPermit::all();
         $offices = Offices::all()->pluck('officename', 'id');
+        $status = status_tbl::all()->pluck('status', 'status');
         return view('rps/wtp.index', compact('wtp', 'offices'));
     }
 

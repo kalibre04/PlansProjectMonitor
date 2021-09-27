@@ -123,7 +123,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending'), 'Approved', ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, 'Approved', ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>
@@ -267,7 +267,7 @@
 				    		<div class="col-md-12">
 				    			<div class="form-group">
 				    				{!! Form::label('','Status') !!}
-				    				{{ Form::select('status', array('Approved'=>'Approved', 'Pending'=>'Pending', 'Cancelled'=>'Cancelled'), $wtps->status, ['class'=>'form-control']) }}
+				    				{{ Form::select('status', $status, $wtps->status, ['class'=>'form-control']) }}
 				    			</div>
 				    		</div>
 				    	</div>

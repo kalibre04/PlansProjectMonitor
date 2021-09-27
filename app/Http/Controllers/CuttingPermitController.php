@@ -11,6 +11,7 @@ use App\Models\cutting_permits;
 use App\Models\cuttingpermit_geotag;
 use App\Models\Offices;
 use App\Models\permit_type;
+use App\Models\status_tbl;
 
 
 class CuttingPermitController extends Controller
