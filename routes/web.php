@@ -42,7 +42,7 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/', function () {
-    $cc = PatentProcessingIssuance::where('status', '=', 'Completed')->get();
+    $cc = PatentProcessingIssuance::where('status', '=', 'Approved')->get();
     $cp = PatentProcessingIssuance::where('status', '=', 'Pending')->get();
     
 
