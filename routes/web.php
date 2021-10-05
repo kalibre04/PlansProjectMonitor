@@ -16,6 +16,7 @@ use App\Http\Controllers\WildlifeRegistrationController;
 use App\Http\Controllers\OtherPermitsController;
 use App\Http\Controllers\ClaimsAndConflictController;
 use App\Http\Controllers\LawinPatrollersController;
+use App\Http\Controllers\PatrolTeamsController;
 use App\Models\PatentProcessingIssuance;
 
 /*
