@@ -324,7 +324,7 @@
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('/casesfiled') }}" class="nav-link">
+                <a href="{{ url('/patrolteams') }}" class="nav-link">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Patrol Teams</p>
                 </a>

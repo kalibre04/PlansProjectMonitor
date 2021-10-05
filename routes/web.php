@@ -73,3 +73,4 @@ Route::resource('otherpermits', OtherPermitsController::class);
 Route::POST('otherpermits.upphoto', [OtherPermitsController::class, 'upload_photo']);
 Route::resource('claimsandconflict', ClaimsAndConflictController::class);
 Route::resource('lawinpatrollers', LawinPatrollersController::class);
+Route::resource('patrolteams', PatrolTeamsController::class);
