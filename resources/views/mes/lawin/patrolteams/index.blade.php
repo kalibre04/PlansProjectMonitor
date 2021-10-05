@@ -10,11 +10,12 @@
                 <table id="tabledata1" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>ID</th>
-                    <th>Photo</th>
-                    <th>Fullname</th>
-                    <th>Position</th>
-                    <th>Office</th>                  
+                    <th>TEAM ID</th>
+                    <th>Office</th>
+                    <th>Sector</th>
+                    <th>Members</th>
+                    <th>Quarter</th>
+                    <th>Year</th>                  
                     <th>Action</th>
                   </tr>
                   </thead>
