@@ -2,7 +2,16 @@
 
 namespace App\Http\Controllers;
 
+
+use App\Models\Offices;
+use App\Models\PatrolTeams;
+
 use Illuminate\Http\Request;
+
+use DB;
+use Validator;
+use Carbon\Carbon;
+
 
 class PatrolTeamsController extends Controller
 {
@@ -28,7 +37,10 @@ class PatrolTeamsController extends Controller
      */
     public function create()
     {
-        //
+        $patrolteams = PatrolTeams::orderby('team_sector', 'DESC')->get();
+        $offices = Offices::all()->pluck('officename', 'id');
+
+        return view('mes/lawin/patrolteams.create_team', compact('patrolteams', 'offices'));
     }
 
     /**
