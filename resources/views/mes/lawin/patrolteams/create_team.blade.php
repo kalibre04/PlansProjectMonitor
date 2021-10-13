@@ -26,7 +26,7 @@
                   		<td>{{ App\Models\Offices::find($patrolteam->team_office)->officename }}</td>
                   		<td>{{ $patrolteam->quarter }}</td>
                   		<td>{{ $patrolteam->year }}</td>
-                  		<td><a href="#view{{ $patrolteam->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
+                  		
                   			@if(Auth::user()->id != $patrolteam->encoded_by)
                   				@if(Auth::user()->acctype == '165')
                   					<a href="#edit{{ $patrolteam->id }}" data-toggle="modal" class="btn btn-success btn-sm">EDIT</a>
