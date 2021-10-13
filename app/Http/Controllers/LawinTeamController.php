@@ -82,7 +82,11 @@ class LawinTeamController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        
+        $patrolteams = PatrolTeams::find($id);
+        $patrolteams->PatrolTeams::update(Request::all());
+        return redirect()->back();
+
     }
 
     /**

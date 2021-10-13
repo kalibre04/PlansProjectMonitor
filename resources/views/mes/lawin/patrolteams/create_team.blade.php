@@ -117,7 +117,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 				{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\PatrolTeamsController@update', $patrolteam->id], 'files'=>true]) !!}
+ 				{!! Form::open(['method'=>'PATCH', 'action'=>['App\Http\Controllers\LawinTeamController@update', $patrolteam->id], 'files'=>true]) !!}
 			    <div class="modal-header">
 			    	<h4 class="modal-title">Edit Team</h4>
 			    </div>
