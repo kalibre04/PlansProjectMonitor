@@ -84,9 +84,8 @@ class LawinTeamController extends Controller
     {
         
         $patrolteams = PatrolTeams::find($id);
-        $patrolteams->PatrolTeams::update(Request::all());
+        $patrolteams->update(Request::all());
         return redirect()->back();
-
     }
 
     /**
