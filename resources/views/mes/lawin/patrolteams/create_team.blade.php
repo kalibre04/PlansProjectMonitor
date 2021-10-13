@@ -23,7 +23,7 @@
                   	<tr>
                   		<td>{{ $patrolteam->id }}</td>
                   		<td>{{ $patrolteam->team_sector }}</td>
-                  		<td>{{ App\Models\Offices::find($patrolteam->office_id)->officename }}</td>
+                  		<td>{{ App\Models\Offices::find($patrolteam->team_office)->officename }}</td>
                   		<td>{{ $patrolteam->quarter }}</td>
                   		<td>{{ $patrolteam->year }}</td>
                   		<td><a href="#view{{ $patrolteam->id }}" data-toggle="modal" class="btn btn-success btn-sm">VIEW</a>
