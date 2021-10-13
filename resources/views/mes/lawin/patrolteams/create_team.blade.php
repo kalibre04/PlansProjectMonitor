@@ -52,7 +52,7 @@
 
  		<div class="modal-content">
  			<div class="modal-body">
- 				{!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PatrolTeamsController@store', 'files'=>true]) !!}
+ 				{!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\LawinTeamController@store', 'files'=>true]) !!}
 			    <div class="modal-header">
 			    	<h4 class="modal-title">Create Team</h4>
 			    </div>

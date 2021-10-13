@@ -6,7 +6,7 @@
               </div>
               <!-- /.card-header -->
         <div class="card-body">
-        		<a href="{{ url('patrolteams/create') }}" class="btn btn-primary" style="margin-bottom: 20px">Create Team</a>
+        		<a href="{{ url('lawinteams/create') }}" class="btn btn-primary" style="margin-bottom: 20px">Create Team</a>
             <a href="#create" data-toggle="modal" class="btn btn-primary" style="margin-bottom: 20px">Assign Patroller</a>
                 <table id="tabledata1" class="table table-bordered table-striped">
                   <thead>
