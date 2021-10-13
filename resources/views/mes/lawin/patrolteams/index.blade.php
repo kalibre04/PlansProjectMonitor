@@ -34,42 +34,27 @@
 
     <div class="modal-content">
       <div class="modal-body">
-        {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\LawinPatrollersController@store', 'files'=>true]) !!}
+        {!! Form::open(['method'=>'POST', 'action'=>'App\Http\Controllers\PatrolTeamsController@store', 'files'=>true]) !!}
           <div class="modal-header">
-            <h4 class="modal-title">Add Patroller</h4>
+            <h4 class="modal-title">Patroller Assignment Module</h4>
           </div>
           <div class="modal-body">
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    {!! Form::label('','Fullname') !!}
-                    {!! Form::text('fullname',null,['class'=>'form-control']) !!}
+                    {!! Form::label('','Patroller Name') !!}
+                    {!! Form::select('patroller_id',$patroller,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
                   </div>
                 </div>
               </div>
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">
-                    {!! Form::label('','Position') !!}
-                    {!! Form::text('position',null,['class'=>'form-control']) !!}
+                    {!! Form::label('','Sector') !!}
+                    {!! Form::select('patrolteam_id',$patrolteam,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    {!! Form::label('','Photo') !!}
-                    {!! Form::file('photo',null,['class'=>'form-control']) !!}
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="form-group">
-                    {{ Form::text('office_id', Auth::user()->office_id, ['class'=>'form-control', 'hidden']) }}
-                  </div>
-                </div>
-              </div>
+              </div>              
               <div class="row">
                 <div class="col-md-12">
                   <div class="form-group">

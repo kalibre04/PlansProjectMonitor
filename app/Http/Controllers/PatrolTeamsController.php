@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Offices;
 use App\Models\PatrolTeams;
+use App\Models\LawinPatrollers;
 
-use Illuminate\Http\Request;
+use Request;
 
 use DB;
 use Validator;
@@ -27,7 +28,10 @@ class PatrolTeamsController extends Controller
 
     public function index()
     {
-        return view('mes/lawin/patrolteams.index');
+
+        $patrollers = LawinPatrollers::orderby('fullname', 'DESC')->get();
+        $patrolteams = Patrolteams::selectRaw('id, CONCAT(team_sector, " - ", quarter, " - ", year) as teamsector')->orderBy('teamsector', 'DESC')->pluck('teamsector', 'id');
+        return view('mes/lawin/patrolteams.index', compact('patrollers', 'patrolteams'));
     }
 
     /**
@@ -35,6 +39,7 @@ class PatrolTeamsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function create()
     {
         $patrolteams = PatrolTeams::orderby('team_sector', 'DESC')->get();
