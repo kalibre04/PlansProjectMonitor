@@ -43,7 +43,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     {!! Form::label('','Patroller Name') !!}
-                    {!! Form::select('patroller_id',$patroller,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
+                    {!! Form::select('patroller_id',$patrollers,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
                   </div>
                 </div>
               </div>
@@ -51,7 +51,7 @@
                 <div class="col-md-12">
                   <div class="form-group">
                     {!! Form::label('','Sector') !!}
-                    {!! Form::select('patrolteam_id',$patrolteam,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
+                    {!! Form::select('patrolteam_id',$patrolteams,null,['class'=>'search-appre', 'style'=>'width: 100%']) !!}
                   </div>
                 </div>
               </div>              
