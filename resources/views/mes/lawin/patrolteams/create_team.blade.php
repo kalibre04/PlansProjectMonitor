@@ -111,7 +111,7 @@
 
 @section('modal')
 @foreach($patrolteams as $patrolteam)
-<div id="edit{{ $patroller->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+<div id="edit{{ $patrolteam->id }}" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
  	<div class="modal-dialog modal-lg">
 
 
