@@ -29,17 +29,18 @@ class PatrolTeamsController extends Controller
     public function index()
     {
 
-        $patrollers = LawinPatrollers::orderby('fullname', 'DESC')->get();
-        $patrolteams = Patrolteams::selectRaw('id, CONCAT(team_sector, " - ", quarter, " - ", year) as teamsector')->orderBy('teamsector', 'DESC')->pluck('teamsector', 'id');
+        $patrollers = LawinPatrollers::all()->pluck('fullname', 'id');
+        $patrolteams = Patrolteams::selectRaw('id, CONCAT(team_sector, " - ", quarter," Quarter", " - ", year) as teamsector')->orderBy('teamsector', 'DESC')->pluck('teamsector', 'id');
         return view('mes/lawin/patrolteams.index', compact('patrollers', 'patrolteams'));
     }
+
 
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
+
     public function create()
     {
         $patrolteams = PatrolTeams::orderby('team_sector', 'DESC')->get();
