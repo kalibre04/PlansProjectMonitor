@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Models\Offices;
 use App\Models\PatrolTeams;
 use App\Models\LawinPatrollers;
+use App\Models\PatrolAssignment;
 
 use Request;
 
@@ -57,7 +58,9 @@ class PatrolTeamsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        PatrolAssignment::create(Request::all());
+        return redirect()->back();
     }
 
     /**
