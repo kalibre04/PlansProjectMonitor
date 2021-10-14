@@ -32,6 +32,13 @@ class PatrolTeamsController extends Controller
 
         $patrollers = LawinPatrollers::all()->pluck('fullname', 'id');
         $patrolteams = Patrolteams::selectRaw('id, CONCAT(team_sector, " - ", quarter," Quarter", " - ", year) as teamsector')->orderBy('teamsector', 'DESC')->pluck('teamsector', 'id');
+
+        $patrolssector = DB::table('LawinPatrollers')
+            ->join('PatrolAssignment', 'LawinPatroller.id', '=', 'PatrolAssignment.patroller_id')
+            ->join('PatrolTeams', 'PatrolAssignment.patrolteam_id', '=', 'PatrolTeams.id')
+            ->join('Offices', 'PatrolTeams.team_office', '=', 'office.id')
+            ->select('LawinPatrollers.fullname', 'PatrolTeams.team_sector', 'Offices.officename', 'PatrolTeams.quarter', 'PatrolTeams.year')->get();
+            dd($patrolsector);
         return view('mes/lawin/patrolteams.index', compact('patrollers', 'patrolteams'));
     }
 
