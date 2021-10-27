@@ -39,6 +39,8 @@ class PatrolTeamsController extends Controller
             ->join('office', 'patrolteams.team_office', '=', 'office.id')
             ->select('lawin_patroller.fullname', 'patrolteams.team_sector', 'office.officename', 'patrolteams.quarter', 'patrolteams.year')->get();
             //dd($patrolssector);
+            //$test = Model::with('lumberdonation', 'patrol')->get();
+
         return view('mes/lawin/patrolteams.index', compact('patrollers', 'patrolteams', 'patrolssector'));
     }
 
