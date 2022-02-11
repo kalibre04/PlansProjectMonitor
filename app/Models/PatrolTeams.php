@@ -10,5 +10,5 @@ class PatrolTeams extends Model
     use HasFactory;
     protected $table ='patrolteams';
     protected $guarded = [];
-
+    
 }

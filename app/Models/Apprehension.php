@@ -17,6 +17,8 @@ class apprehension extends Model
 
 
     
+    //$test DB::table('table1')
+    //->join('table2')
 
 
 }

@@ -12,5 +12,6 @@ class PatrolAssignment extends Model
     protected $guarded = [
 
     ];
-
+    
+    
 }
